@@ -3,13 +3,16 @@
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .header {
+    width: 50vw;
     height: 10vh;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -22,21 +25,19 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     gap: 1rem;
 }
 
 .addTodoSection {
-    width: 40vw;
+    width: 50vw;
     height: 5rem;
 
     display: flex;
-    align-items: center;
-    gap: 1rem;
 
-    border: solid 2px black;
-    border-radius: 10px;
+    border-radius: 5px;
+
+    overflow: hidden;
 }
 
 .todoInput {
@@ -47,38 +48,107 @@
     padding: 1rem;
 
     border: none;
-    border-radius: 10px 0 0 10px;
 
     outline: none;
+
+    background-color: lightgray;
 }
 
 .addTodoButton {
     width: 5rem;
     height: 100%;
 
+    font-size: 42px;
+    line-height: 42px;
+
     border: none;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0;
+
+    background-color: darkgray;
+}
+
+.addTodoButton:hover {
+    background-color: gray;
 }
 
 .todoListSection {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    width: 50vw;
 
-.todoList {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
 
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    background-color: lightgray;
+}
+
+.listOptions {
+    width: 50vw;
+
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    border-radius: 5px;
+
+    background-color: lightgray;
+}
+
+.listFilters {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filterButton {
+    cursor: pointer;
+
+    text-decoration: underline 2px;
+
+    border: none;
+
+    background: none;
+}
+
+.clearCompleteButton {
+    cursor: pointer;
+
+    text-decoration: underline 2px;
+
+    border: none;
+
+    background: none;
+}
+
+.todoList {
+    position: relative;
+
+    flex: 1;
+
+    width: 50vw;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+
     list-style: none;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    background-color: darkgray;
 }
 
 .todoItem {
-    width: 40vw;
     height: 5rem;
 
     padding: 1rem;
@@ -87,18 +157,34 @@
     align-items: center;
     gap: 1rem;
 
-    border: solid 2px black;
-    border-radius: 10px;
+    background-color: lightgray;
 }
 
-.todoButton {
-    height: 4rem;
-    width: 4rem;
+.todoText {
+    flex: 1;
 
-    border: solid 2px black;
-    border-radius: 50%;
+    padding: 1rem;
+}
 
-    background-color: white;
+.todoMover {
+    width: 3rem;
+    height: 3rem;
+
+    cursor: grab;
+
+    background-color: darkgray;
+}
+
+.todoMover:active {
+    cursor: grabbing;
+}
+
+.completed {
+    text-decoration: line-through 2px;
+}
+
+.hidden {
+    display: none;
 }
 
 .footer {
