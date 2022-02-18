@@ -24,9 +24,7 @@ const TodoForm = ({ addTodo }: FormProps) => {
                     placeholder='Create a new todo...'
                     className={styles.todoInput}
                 />
-                <button type='submit' className={styles.addTodoButton}>
-                    +
-                </button>
+                <button type='submit' className={styles.addTodoButton}></button>
             </Form>
         </Formik>
     );
