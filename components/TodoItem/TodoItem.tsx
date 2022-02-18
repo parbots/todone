@@ -1,6 +1,9 @@
 import styles from './TodoItem.module.css';
 
 import { Todo } from 'types/Todo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faCircle } from '@fortawesome/free-regular-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 type TodoProps = {
     todo: Todo;
@@ -20,7 +23,24 @@ const TodoItem = ({ todo, complete, remove }: TodoProps) => {
                     onClick={() => complete(todo)}
                     className={styles.completeTodoButton}
                 >
-                    Complete
+                    {!todo.completed && (
+                        <FontAwesomeIcon
+                            icon={faCircle}
+                            size='3x'
+                            fixedWidth
+                            className={styles.completeIcon}
+                            data-complete='false'
+                        />
+                    )}
+                    {todo.completed && (
+                        <FontAwesomeIcon
+                            icon={faCheckCircle}
+                            size='3x'
+                            fixedWidth
+                            className={styles.completeTodoIcon}
+                            data-complete='true'
+                        />
+                    )}
                 </button>
                 <p
                     className={`${styles.todoText} ${
@@ -34,7 +54,12 @@ const TodoItem = ({ todo, complete, remove }: TodoProps) => {
                 onClick={() => remove(todo)}
                 className={styles.removeTodoButton}
             >
-                Delete
+                <FontAwesomeIcon
+                    icon={faXmark}
+                    size='3x'
+                    fixedWidth
+                    className={styles.removeTodoIcon}
+                />
             </button>
         </li>
     );

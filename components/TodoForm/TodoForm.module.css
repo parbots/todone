@@ -34,15 +34,10 @@
     align-items: center;
 
     border: none;
-    border-radius: 5px;
 
-    background-color: darkgray;
+    background: none;
 
     transition: width 0.3s;
-}
-
-.addTodoButton:hover {
-    background-color: gray;
 }
 
 .todoForm:hover .addTodoButton,
@@ -52,8 +47,10 @@
 
 .addTodoIcon {
     flex: 1;
+
+    transition: color 0.3s;
 }
 
 .addTodoButton:hover .addTodoIcon {
-    color: lightgreen;
+    color: darkgreen;
 }

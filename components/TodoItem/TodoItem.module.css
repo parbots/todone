@@ -8,6 +8,8 @@
     align-items: center;
     gap: 1rem;
 
+    border-radius: 10px;
+
     background-color: lightgray;
 }
 
@@ -64,7 +66,25 @@
 }
 
 .completeTodoButton {
+    width: 5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     cursor: pointer;
+
+    border: none;
+
+    background: none;
+}
+
+.completeTodoIcon {
+    flex: 1;
+}
+
+.completeTodoIcon[data-complete='true'] {
+    color: darkgreen;
 }
 
 .todoText {
@@ -100,5 +120,25 @@
 }
 
 .removeTodoButton {
+    width: 5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     cursor: pointer;
+
+    border: none;
+
+    background: none;
+}
+
+.removeTodoIcon {
+    flex: 1;
+
+    transition: color 0.3s;
+}
+
+.removeTodoIcon:hover {
+    color: red;
 }
