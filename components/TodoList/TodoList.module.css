@@ -1,0 +1,15 @@
+.todoList {
+    flex: 1;
+
+    width: 50vw;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    background-color: darkgray;
+}

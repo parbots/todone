@@ -5,16 +5,13 @@ import Head from 'next/head';
 
 import { useState } from 'react';
 
+import { Todo } from 'types/Todo';
+
+import TodoList from 'components/TodoList';
+
 import { Formik, Form, Field } from 'formik';
 
 const HomePage: NextPage = () => {
-    type Todo = {
-        id: number;
-        text: string;
-        completed: boolean;
-        hidden: boolean;
-    };
-
     const [todoId, setTodoId] = useState(0);
     const [todos, setTodos] = useState<Todo[]>([]);
 
@@ -104,7 +101,6 @@ const HomePage: NextPage = () => {
                 >
                     {todo.text}
                 </p>
-                <div className={styles.todoMover}></div>
                 <button
                     onClick={() => {
                         removeTodo(todo);
@@ -177,7 +173,7 @@ const HomePage: NextPage = () => {
                     </button>
                 </section>
                 <section className={styles.todoListSection}>
-                    <ul className={styles.todoList}>{todoItems}</ul>
+                    <TodoList>{todoItems}</TodoList>
                 </section>
             </main>
             <footer className={styles.footer}>
