@@ -7,11 +7,12 @@ import { useState } from 'react';
 
 import { Todo } from 'types/Todo';
 
-import TodoForm from 'components/TodoForm';
-import TodoList from 'components/TodoList';
 import Header from 'components/Header';
-import Footer from 'components/Footer';
+import TodoForm from 'components/TodoForm';
 import TodoOptions from 'components/TodoOptions';
+import TodoList from 'components/TodoList';
+import TodoItem from 'components/TodoItem';
+import Footer from 'components/Footer';
 
 const HomePage: NextPage = () => {
     const [todoId, setTodoId] = useState(0);
@@ -35,7 +36,7 @@ const HomePage: NextPage = () => {
         setTodos(todos.filter((todo) => todoToRemove !== todo));
     };
 
-    const toggleCompleteTodo = (todo: Todo) => {
+    const toggleCompletedTodo = (todo: Todo) => {
         let todosCopy = [...todos];
         const todoIndex = todosCopy.indexOf(todo);
         todosCopy[todoIndex].completed = !todosCopy[todoIndex].completed;
@@ -83,34 +84,12 @@ const HomePage: NextPage = () => {
 
     const todoItems = todos.map((todo) => {
         return (
-            <li
+            <TodoItem
+                todo={todo}
+                toggleCompleted={toggleCompletedTodo}
+                remove={removeTodo}
                 key={todo.id}
-                className={`${styles.todoItem} ${
-                    todo.hidden ? styles.hidden : ''
-                }`}
-            >
-                <button
-                    onClick={() => {
-                        toggleCompleteTodo(todo);
-                    }}
-                >
-                    Complete
-                </button>
-                <p
-                    className={`${styles.todoText} ${
-                        todo.completed ? styles.completed : ''
-                    }`}
-                >
-                    {todo.text}
-                </p>
-                <button
-                    onClick={() => {
-                        removeTodo(todo);
-                    }}
-                >
-                    X
-                </button>
-            </li>
+            />
         );
     });
 
@@ -119,7 +98,6 @@ const HomePage: NextPage = () => {
             <Head>
                 <title>ToDone</title>
                 <meta name='description' content='Go from do to done.' />
-                <link rel='icon' href='/favicon.ico' />
             </Head>
 
             <Header />

@@ -1,0 +1,25 @@
+.todoItem {
+    height: 5rem;
+
+    padding: 1rem;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    background-color: lightgray;
+}
+
+.todoText {
+    flex: 1;
+
+    padding: 1rem;
+}
+
+.completed {
+    text-decoration: line-through 2px;
+}
+
+.hidden {
+    display: none;
+}
