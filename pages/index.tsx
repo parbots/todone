@@ -32,11 +32,7 @@ const HomePage: NextPage = () => {
     };
 
     const removeTodo = (todoToRemove: Todo) => {
-        const newTodos = todos.filter((todo) => {
-            return todoToRemove !== todo;
-        });
-
-        setTodos([...newTodos]);
+        setTodos(todos.filter((todo) => todoToRemove !== todo));
     };
 
     const toggleCompleteTodo = (todo: Todo) => {
@@ -47,38 +43,38 @@ const HomePage: NextPage = () => {
     };
 
     const showAllTodos = () => {
-        const newTodos = todos.map((todo) => {
-            todo.hidden = false;
-            return todo;
-        });
-
-        setTodos([...newTodos]);
+        setTodos(
+            todos.map((todo) => {
+                todo.hidden = false;
+                return todo;
+            })
+        );
     };
 
     const showActiveTodos = () => {
-        const newTodos = todos.map((todo) => {
-            todo.completed ? (todo.hidden = true) : (todo.hidden = false);
-            return todo;
-        });
-
-        setTodos([...newTodos]);
+        setTodos(
+            todos.map((todo) => {
+                todo.completed ? (todo.hidden = true) : (todo.hidden = false);
+                return todo;
+            })
+        );
     };
 
     const showCompletedTodos = () => {
-        const newTodos = todos.map((todo) => {
-            todo.completed ? (todo.hidden = false) : (todo.hidden = true);
-            return todo;
-        });
-
-        setTodos([...newTodos]);
+        setTodos(
+            todos.map((todo) => {
+                todo.completed ? (todo.hidden = false) : (todo.hidden = true);
+                return todo;
+            })
+        );
     };
 
     const removeCompletedTodos = () => {
-        const newTodos = todos.filter((todo) => {
-            return !todo.completed;
-        });
-
-        setTodos([...newTodos]);
+        setTodos(
+            todos.filter((todo) => {
+                return !todo.completed;
+            })
+        );
     };
 
     const removeAllTodos = () => {
