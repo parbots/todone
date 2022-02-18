@@ -29,6 +29,10 @@
     width: 0;
     height: 100%;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     border: none;
     border-radius: 5px;
 
@@ -44,4 +48,12 @@
 .todoForm:hover .addTodoButton,
 .todoForm:focus-within .addTodoButton {
     width: 5rem;
+}
+
+.addTodoIcon {
+    flex: 1;
+}
+
+.addTodoButton:hover .addTodoIcon {
+    color: lightgreen;
 }
