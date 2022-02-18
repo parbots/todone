@@ -9,6 +9,8 @@ import { Todo } from 'types/Todo';
 
 import TodoForm from 'components/TodoForm';
 import TodoList from 'components/TodoList';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 const HomePage: NextPage = () => {
     const [todoId, setTodoId] = useState(0);
@@ -119,9 +121,7 @@ const HomePage: NextPage = () => {
                 <link rel='icon' href='/favicon.ico' />
             </Head>
 
-            <header className={styles.header}>
-                <h1 className={styles.headerTitle}>ToDone</h1>
-            </header>
+            <Header />
             <main className={styles.main}>
                 <TodoForm addTodo={addTodo} />
                 <section className={styles.listOptions}>
@@ -157,9 +157,7 @@ const HomePage: NextPage = () => {
                     <TodoList>{todoItems}</TodoList>
                 </section>
             </main>
-            <footer className={styles.footer}>
-                <p className={styles.copyright}>© Parker Botsford</p>
-            </footer>
+            <Footer />
         </div>
     );
 };

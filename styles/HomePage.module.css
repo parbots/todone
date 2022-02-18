@@ -7,19 +7,6 @@
     align-items: center;
 }
 
-.header {
-    width: 50vw;
-    height: 10vh;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.headerTitle {
-    text-align: center;
-}
-
 .main {
     min-height: 85vh;
 
@@ -110,16 +97,4 @@
 
 .hidden {
     display: none;
-}
-
-.footer {
-    height: 5vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.copyright {
-    font-size: 12px;
 }
