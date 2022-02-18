@@ -36,11 +36,9 @@ const HomePage: NextPage = () => {
         setTodos(todos.filter((todo) => todoToRemove !== todo));
     };
 
-    const toggleCompletedTodo = (todo: Todo) => {
-        let todosCopy = [...todos];
-        const todoIndex = todosCopy.indexOf(todo);
-        todosCopy[todoIndex].completed = !todosCopy[todoIndex].completed;
-        setTodos([...todosCopy]);
+    const completeTodo = (todo: Todo) => {
+        todo.completed = true;
+        setTodos([...todos]);
     };
 
     const showAllTodos = () => {
@@ -86,7 +84,7 @@ const HomePage: NextPage = () => {
         return (
             <TodoItem
                 todo={todo}
-                toggleCompleted={toggleCompletedTodo}
+                complete={completeTodo}
                 remove={removeTodo}
                 key={todo.id}
             />

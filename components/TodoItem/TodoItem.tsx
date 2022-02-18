@@ -4,24 +4,38 @@ import { Todo } from 'types/Todo';
 
 type TodoProps = {
     todo: Todo;
-    toggleCompleted: Function;
+    complete: Function;
     remove: Function;
 };
 
-const TodoItem = ({ todo, toggleCompleted, remove }: TodoProps) => {
+const TodoItem = ({ todo, complete, remove }: TodoProps) => {
     return (
         <li
-            className={`${styles.todoItem} ${todo.hidden ? styles.hidden : ''}`}
+            className={`${styles.todoItem} ${
+                todo.hidden ? styles.hidden : styles.shown
+            }`}
         >
-            <button onClick={() => toggleCompleted(todo)}>Complete</button>
-            <p
-                className={`${styles.todoText} ${
-                    todo.completed ? styles.completed : ''
-                }`}
+            <div className={styles.todoLeft}>
+                <button
+                    onClick={() => complete(todo)}
+                    className={styles.completeTodoButton}
+                >
+                    Complete
+                </button>
+                <p
+                    className={`${styles.todoText} ${
+                        todo.completed ? styles.completedText : ''
+                    }`}
+                >
+                    {todo.text}
+                </p>
+            </div>
+            <button
+                onClick={() => remove(todo)}
+                className={styles.removeTodoButton}
             >
-                {todo.text}
-            </p>
-            <button onClick={() => remove(todo)}>X</button>
+                Delete
+            </button>
         </li>
     );
 };
