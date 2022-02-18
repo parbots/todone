@@ -1,7 +1,5 @@
 .todoItem {
-    height: 5rem;
-
-    padding: 1rem;
+    width: 100%;
 
     display: flex;
     justify-content: space-between;
@@ -61,12 +59,14 @@
 
 .todoLeft {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     gap: 1rem;
 }
 
 .completeTodoButton {
     width: 5rem;
+    height: 5rem;
 
     display: flex;
     justify-content: center;
@@ -80,7 +80,7 @@
 }
 
 .completeTodoIcon {
-    flex: 1;
+    font-size: 4rem;
 }
 
 .completeTodoIcon[data-complete='true'] {
@@ -121,6 +121,7 @@
 
 .removeTodoButton {
     width: 5rem;
+    height: 5rem;
 
     display: flex;
     justify-content: center;
@@ -134,7 +135,7 @@
 }
 
 .removeTodoIcon {
-    flex: 1;
+    font-size: 5rem;
 
     transition: color 0.3s;
 }

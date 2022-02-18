@@ -26,16 +26,14 @@ const TodoItem = ({ todo, complete, remove }: TodoProps) => {
                     {!todo.completed && (
                         <FontAwesomeIcon
                             icon={faCircle}
-                            size='3x'
                             fixedWidth
-                            className={styles.completeIcon}
+                            className={styles.completeTodoIcon}
                             data-complete='false'
                         />
                     )}
                     {todo.completed && (
                         <FontAwesomeIcon
                             icon={faCheckCircle}
-                            size='3x'
                             fixedWidth
                             className={styles.completeTodoIcon}
                             data-complete='true'
@@ -56,7 +54,6 @@ const TodoItem = ({ todo, complete, remove }: TodoProps) => {
             >
                 <FontAwesomeIcon
                     icon={faXmark}
-                    size='3x'
                     fixedWidth
                     className={styles.removeTodoIcon}
                 />
