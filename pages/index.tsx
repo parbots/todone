@@ -7,9 +7,8 @@ import { useState } from 'react';
 
 import { Todo } from 'types/Todo';
 
+import TodoForm from 'components/TodoForm';
 import TodoList from 'components/TodoList';
-
-import { Formik, Form, Field } from 'formik';
 
 const HomePage: NextPage = () => {
     const [todoId, setTodoId] = useState(0);
@@ -124,25 +123,7 @@ const HomePage: NextPage = () => {
                 <h1 className={styles.headerTitle}>ToDone</h1>
             </header>
             <main className={styles.main}>
-                <Formik
-                    initialValues={{ todoInput: '' }}
-                    onSubmit={(values, actions) => {
-                        addTodo(values.todoInput);
-                        actions.resetForm();
-                    }}
-                >
-                    <Form className={styles.addTodoSection}>
-                        <Field
-                            id='todoInput'
-                            name='todoInput'
-                            placeholder='Create a new todo...'
-                            className={styles.todoInput}
-                        />
-                        <button type='submit' className={styles.addTodoButton}>
-                            +
-                        </button>
-                    </Form>
-                </Formik>
+                <TodoForm addTodo={addTodo} />
                 <section className={styles.listOptions}>
                     <div className={styles.listFilters}>
                         <p className={styles.filterText}>Show:</p>

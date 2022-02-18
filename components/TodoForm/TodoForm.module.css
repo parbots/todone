@@ -1,0 +1,41 @@
+.todoForm {
+    width: 50vw;
+    height: 5rem;
+
+    display: flex;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+.todoInput {
+    flex: 1;
+
+    height: 100%;
+
+    padding: 1rem;
+
+    border: none;
+
+    outline: none;
+
+    background-color: lightgray;
+}
+
+.addTodoButton {
+    width: 5rem;
+    height: 100%;
+
+    font-size: 42px;
+    line-height: 42px;
+
+    border: none;
+    border-radius: 0;
+
+    background-color: darkgray;
+}
+
+.addTodoButton:hover {
+    background-color: gray;
+}
