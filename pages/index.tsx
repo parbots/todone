@@ -123,8 +123,10 @@ const HomePage: NextPage = () => {
 
             <Header />
             <main className={styles.main}>
-                <TodoForm addTodo={addTodo} />
-                <section className={styles.listOptions}>
+                <section className={styles.todoFormSection}>
+                    <TodoForm addTodo={addTodo} />
+                </section>
+                <section className={styles.todoOptionsSection}>
                     <div className={styles.listFilters}>
                         <p className={styles.filterText}>Show:</p>
                         <button
