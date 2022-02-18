@@ -11,6 +11,7 @@ import TodoForm from 'components/TodoForm';
 import TodoList from 'components/TodoList';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import TodoOptions from 'components/TodoOptions';
 
 const HomePage: NextPage = () => {
     const [todoId, setTodoId] = useState(0);
@@ -80,6 +81,10 @@ const HomePage: NextPage = () => {
         setTodos([...newTodos]);
     };
 
+    const removeAllTodos = () => {
+        setTodos([]);
+    };
+
     const todoItems = todos.map((todo) => {
         return (
             <li
@@ -126,35 +131,13 @@ const HomePage: NextPage = () => {
                 <section className={styles.todoFormSection}>
                     <TodoForm addTodo={addTodo} />
                 </section>
-                <section className={styles.todoOptionsSection}>
-                    <div className={styles.listFilters}>
-                        <p className={styles.filterText}>Show:</p>
-                        <button
-                            onClick={showAllTodos}
-                            className={styles.filterButton}
-                        >
-                            All
-                        </button>
-                        <button
-                            onClick={showActiveTodos}
-                            className={styles.filterButton}
-                        >
-                            Active
-                        </button>
-                        <button
-                            onClick={showCompletedTodos}
-                            className={styles.filterButton}
-                        >
-                            Complete
-                        </button>
-                    </div>
-                    <button
-                        onClick={removeCompletedTodos}
-                        className={styles.clearCompleteButton}
-                    >
-                        Clear Complete
-                    </button>
-                </section>
+                <TodoOptions
+                    showAll={showAllTodos}
+                    showActive={showActiveTodos}
+                    showCompleted={showCompletedTodos}
+                    removeCompleted={removeCompletedTodos}
+                    removeAll={removeAllTodos}
+                />
                 <section className={styles.todoListSection}>
                     <TodoList>{todoItems}</TodoList>
                 </section>

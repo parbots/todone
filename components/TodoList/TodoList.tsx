@@ -1,8 +1,12 @@
 import styles from './TodoList.module.css';
 
-import { FC } from 'react';
+import { ReactNode } from 'react';
 
-const TodoList: FC = ({ children }) => {
+type ListProps = {
+    children: ReactNode;
+};
+
+const TodoList = ({ children }: ListProps) => {
     return <ul className={styles.todoList}>{children}</ul>;
 };
 
