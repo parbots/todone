@@ -17,6 +17,7 @@ const TodoItem = ({ todo, complete, remove }: TodoProps) => {
             className={`${styles.todoItem} ${
                 todo.hidden ? styles.hidden : styles.shown
             }`}
+            data-complete={todo.completed ? 'true' : 'false'}
         >
             <div className={styles.todoLeft}>
                 <button
@@ -28,7 +29,6 @@ const TodoItem = ({ todo, complete, remove }: TodoProps) => {
                             icon={faCircle}
                             fixedWidth
                             className={styles.completeTodoIcon}
-                            data-complete='false'
                         />
                     )}
                     {todo.completed && (
@@ -36,7 +36,6 @@ const TodoItem = ({ todo, complete, remove }: TodoProps) => {
                             icon={faCheckCircle}
                             fixedWidth
                             className={styles.completeTodoIcon}
-                            data-complete='true'
                         />
                     )}
                 </button>

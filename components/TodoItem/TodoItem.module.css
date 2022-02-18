@@ -1,4 +1,6 @@
 .todoItem {
+    position: relative;
+
     width: 100%;
 
     display: flex;
@@ -81,9 +83,15 @@
 
 .completeTodoIcon {
     font-size: 4rem;
+
+    transition: color 0.3s;
 }
 
-.completeTodoIcon[data-complete='true'] {
+.todoItem[data-complete='false'] .completeTodoButton:hover .completeTodoIcon {
+    color: darkgreen;
+}
+
+.todoItem[data-complete='true'] .completeTodoIcon {
     color: darkgreen;
 }
 
@@ -91,7 +99,7 @@
     position: relative;
 }
 
-.completedText::after {
+.todoItem[data-complete='true'] .todoText::after {
     content: '';
 
     position: absolute;
@@ -120,7 +128,10 @@
 }
 
 .removeTodoButton {
-    width: 5rem;
+    position: absolute;
+    right: 0;
+
+    width: 0;
     height: 5rem;
 
     display: flex;
@@ -132,14 +143,22 @@
     border: none;
 
     background: none;
+
+    transition: width 0.3s;
+}
+
+.todoItem:hover .removeTodoButton {
+    width: 5rem;
 }
 
 .removeTodoIcon {
     font-size: 5rem;
 
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.3s;
 }
 
 .removeTodoIcon:hover {
     color: red;
+
+    transform: rotate(180deg);
 }
