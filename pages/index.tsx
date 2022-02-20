@@ -28,6 +28,7 @@ const ToDone: NextPage = () => {
             },
         ]);
 
+        // TODO: Generate random keys
         setItemID(itemID + 1);
     };
 
@@ -38,6 +39,19 @@ const ToDone: NextPage = () => {
                 return item.id !== idToRemove;
             })
         );
+    };
+
+    // Complete an item
+    const completeItem = (idToComplete: number) => {
+        setItems(
+            items.map((item) => {
+                return item.id === idToComplete
+                    ? { id: itemID, name: item.name, complete: true }
+                    : item;
+            })
+        );
+
+        setItemID(itemID + 1);
     };
 
     return (
@@ -56,7 +70,11 @@ const ToDone: NextPage = () => {
                     <ListOptions />
                 </section>
                 <section className={styles.section}>
-                    <List items={items} removeItem={removeItem} />
+                    <List
+                        items={items}
+                        completeItem={completeItem}
+                        removeItem={removeItem}
+                    />
                 </section>
             </main>
             <Footer />

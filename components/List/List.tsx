@@ -6,10 +6,11 @@ import Item from 'components/Item';
 
 type ListProps = {
     items: ItemType[];
+    completeItem: Function;
     removeItem: Function;
 };
 
-const List = ({ items, removeItem }: ListProps) => {
+const List = ({ items, completeItem, removeItem }: ListProps) => {
     return (
         <ul className={styles.list}>
             {items.map((item) => {
@@ -18,6 +19,7 @@ const List = ({ items, removeItem }: ListProps) => {
                         key={item.id}
                         name={item.name}
                         complete={item.complete}
+                        completeSelf={() => completeItem(item.id)}
                         removeSelf={() => removeItem(item.id)}
                     />
                 );
