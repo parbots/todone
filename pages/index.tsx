@@ -41,6 +41,20 @@ const ToDone: NextPage = () => {
         );
     };
 
+    // Remove all items
+    const removeAllItems = () => {
+        setItems([]);
+    };
+
+    // Remove completed items
+    const removeCompleteItems = () => {
+        setItems(
+            items.filter((item) => {
+                return !item.complete;
+            })
+        );
+    };
+
     // Complete an item
     const completeItem = (idToComplete: number) => {
         setItems(
@@ -67,7 +81,10 @@ const ToDone: NextPage = () => {
                     <AddItemForm addItem={addItem} />
                 </section>
                 <section className={styles.section}>
-                    <ListOptions />
+                    <ListOptions
+                        removeAll={removeAllItems}
+                        removeComplete={removeCompleteItems}
+                    />
                 </section>
                 <section className={styles.section}>
                     <List
