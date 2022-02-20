@@ -1,14 +1,27 @@
+import styles from './List.module.css';
 
-import styles from './List.module.css'
-import React from 'react';
+import { ItemType } from 'types/Item';
 
-const List = () => {
+import Item from 'components/Item';
+
+type ListProps = {
+    items: ItemType[];
+};
+
+const List = ({ items }: ListProps) => {
     return (
-        <div>
-            <h1>List</h1>
-        </div>
+        <ul className={styles.list}>
+            {items.map((item) => {
+                return (
+                    <Item
+                        key={item.name}
+                        name={item.name}
+                        complete={item.complete}
+                    />
+                );
+            })}
+        </ul>
     );
 };
 
 export default List;
-
