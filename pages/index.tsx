@@ -16,6 +16,7 @@ import Footer from 'components/Footer';
 const ToDone: NextPage = () => {
     const [itemID, setItemID] = useState(0); // ID counter for items
     const [items, setItems] = useState<ItemType[]>([]); // List of items
+    const [itemFilter, setItemFilter] = useState('all'); // Item filter
 
     // Create a new item
     const addItem = (name: string) => {
@@ -67,8 +68,6 @@ const ToDone: NextPage = () => {
 
         setItemID(itemID + 1);
     };
-
-    const [itemFilter, setItemFilter] = useState('all');
 
     return (
         <div className={styles.page}>
