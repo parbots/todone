@@ -8,18 +8,22 @@ type FormProps = {
 
 const AddItemForm = ({ addItem }: FormProps) => {
     const [inputValue, setInputValue] = useState('');
-    const [isValidName, setValidName] = useState(false);
+    const [valid, setValid] = useState(false);
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setValidName(event.target.value !== '' && event.target.value !== ' ');
+        if (!valid && event.target.value !== '' && event.target.value !== ' ') {
+            setValid(true);
+        }
+
         setInputValue(event.target.value);
     };
 
     const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if (isValidName) {
+        if (valid) {
             addItem(inputValue);
+            setValid(false);
         }
 
         setInputValue('');
