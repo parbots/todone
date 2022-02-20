@@ -7,7 +7,11 @@
     align-items: center;
     gap: 1rem;
 
+    border: none;
     border-radius: 10px;
+
+    color: var(--color);
+    background-color: var(--highlight-color);
 }
 
 .section {
@@ -31,5 +35,18 @@
 }
 
 .actionButton {
+    padding: 0.5rem;
+
     cursor: pointer;
+
+    border: solid 2px var(--color);
+    border-radius: 10px;
+
+    color: var(--color);
+    background-color: var(--highlight-color);
+}
+
+.actionButton:hover {
+    color: var(--highlight-color);
+    background-color: var(--color);
 }

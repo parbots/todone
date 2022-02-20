@@ -1,9 +1,13 @@
 .footer {
+    width: 60vw;
     height: 5vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    color: var(--color);
+    background-color: var(--background-color);
 }
 
 .copyright {

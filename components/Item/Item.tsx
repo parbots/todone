@@ -32,7 +32,7 @@ const Item = ({ name, complete, completeSelf, removeSelf }: ItemProps) => {
                 onClick={() => removeSelf()}
                 className={styles.removeItemButton}
             >
-                Remove
+                X
             </button>
         </li>
     );

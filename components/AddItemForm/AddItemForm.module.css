@@ -5,6 +5,8 @@
     height: 5rem;
 
     display: flex;
+
+    background: none;
 }
 
 .itemInput {
@@ -12,7 +14,11 @@
 
     padding: 1rem;
 
+    border: none;
     border-radius: 10px;
+
+    color: var(--color);
+    background-color: var(--highlight-color);
 }
 
 .addItemButton {
@@ -24,5 +30,14 @@
 
     cursor: pointer;
 
+    border: solid 2px var(--color);
     border-radius: 10px;
+
+    color: var(--color);
+    background-color: var(--highlight-color);
+}
+
+.addItemButton:hover {
+    color: var(--highlight-color);
+    background-color: var(--color);
 }
