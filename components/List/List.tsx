@@ -6,19 +6,26 @@ import Item from 'components/Item';
 
 type ListProps = {
     items: ItemType[];
+    filters: string[];
     filter: string;
     completeItem: Function;
     removeItem: Function;
 };
 
-const List = ({ items, filter, completeItem, removeItem }: ListProps) => {
+const List = ({
+    items,
+    filters,
+    filter,
+    completeItem,
+    removeItem,
+}: ListProps) => {
     const filteredItems = items.filter((item) => {
         switch (filter) {
-            case 'all':
+            case filters[0]:
                 return true;
-            case 'active':
+            case filters[1]:
                 return !item.complete;
-            case 'complete':
+            case filters[2]:
                 return item.complete;
         }
     });

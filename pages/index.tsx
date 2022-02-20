@@ -14,9 +14,13 @@ import List from 'components/List';
 import Footer from 'components/Footer';
 
 const ToDone: NextPage = () => {
-    const [itemID, setItemID] = useState(0); // ID counter for items
+    const [itemID, setItemID] = useState(0); // ID counter
     const [items, setItems] = useState<ItemType[]>([]); // List of items
-    const [itemFilter, setItemFilter] = useState('all'); // Item filter
+
+    // Item filters
+    const [filters, _] = useState(['All', 'Active', 'Complete']);
+    // Current Item filter
+    const [itemFilter, setItemFilter] = useState(filters[0]);
 
     // Create a new item
     const addItem = (name: string) => {
@@ -83,6 +87,7 @@ const ToDone: NextPage = () => {
                 </section>
                 <section className={styles.section}>
                     <ListOptions
+                        filters={filters}
                         filter={itemFilter}
                         setFilter={setItemFilter}
                         removeAll={removeAllItems}
@@ -92,6 +97,7 @@ const ToDone: NextPage = () => {
                 <section className={styles.section}>
                     <List
                         items={items}
+                        filters={filters}
                         filter={itemFilter}
                         completeItem={completeItem}
                         removeItem={removeItem}
