@@ -1,0 +1,29 @@
+.item {
+    position: relative;
+
+    width: 60vw;
+    height: 5rem;
+
+    display: flex;
+    align-items: center;
+}
+
+.checkBox {
+    position: absolute;
+    left: 0;
+
+    width: 5rem;
+    height: 5rem;
+}
+
+.itemName {
+    padding: 1rem 6rem;
+}
+
+.removeItemButton {
+    position: absolute;
+    right: 0;
+
+    width: 5rem;
+    height: 5rem;
+}

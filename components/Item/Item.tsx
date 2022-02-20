@@ -1,14 +1,23 @@
+import styles from './Item.module.css';
 
-import styles from './Item.module.css'
-import React from 'react';
+type ItemProps = {
+    name: string;
+    complete: boolean;
+};
 
-const Item = () => {
+const Item = ({ name, complete }: ItemProps) => {
     return (
-        <div>
-            <h1>Item</h1>
-        </div>
+        <li className={styles.item}>
+            <input
+                type='checkbox'
+                name='complete'
+                checked={complete ? true : undefined}
+                className={styles.checkBox}
+            />
+            <p className={styles.itemName}>{name}</p>
+            <button className={styles.removeItemButton}>Remove</button>
+        </li>
     );
 };
 
 export default Item;
-
