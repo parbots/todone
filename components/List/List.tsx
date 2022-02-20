@@ -6,14 +6,26 @@ import Item from 'components/Item';
 
 type ListProps = {
     items: ItemType[];
+    filter: string;
     completeItem: Function;
     removeItem: Function;
 };
 
-const List = ({ items, completeItem, removeItem }: ListProps) => {
+const List = ({ items, filter, completeItem, removeItem }: ListProps) => {
+    const filteredItems = items.filter((item) => {
+        switch (filter) {
+            case 'all':
+                return true;
+            case 'active':
+                return !item.complete;
+            case 'complete':
+                return item.complete;
+        }
+    });
+
     return (
         <ul className={styles.list}>
-            {items.map((item) => {
+            {filteredItems.map((item) => {
                 return (
                     <Item
                         key={item.id}

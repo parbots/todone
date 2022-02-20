@@ -93,6 +93,7 @@ const ToDone: NextPage = () => {
                 <section className={styles.section}>
                     <List
                         items={items}
+                        filter={itemFilter}
                         completeItem={completeItem}
                         removeItem={removeItem}
                     />
