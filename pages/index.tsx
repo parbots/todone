@@ -68,6 +68,8 @@ const ToDone: NextPage = () => {
         setItemID(itemID + 1);
     };
 
+    const [itemFilter, setItemFilter] = useState('all');
+
     return (
         <div className={styles.page}>
             <Head>
@@ -82,6 +84,8 @@ const ToDone: NextPage = () => {
                 </section>
                 <section className={styles.section}>
                     <ListOptions
+                        filter={itemFilter}
+                        setFilter={setItemFilter}
                         removeAll={removeAllItems}
                         removeComplete={removeCompleteItems}
                     />

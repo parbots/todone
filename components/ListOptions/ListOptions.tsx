@@ -1,41 +1,57 @@
 import styles from './ListOptions.module.css';
 
+import { useState, ChangeEvent } from 'react';
+
 type OptionsProps = {
+    filter: string;
+    setFilter: Function;
     removeAll: Function;
     removeComplete: Function;
 };
 
-const ListOptions = ({ removeAll, removeComplete }: OptionsProps) => {
+const ListOptions = ({
+    filter,
+    setFilter,
+    removeAll,
+    removeComplete,
+}: OptionsProps) => {
+    const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setFilter(event.target.value);
+    };
+
     return (
         <fieldset className={styles.listOptions}>
             <section className={styles.section}>
-                <label htmlFor='all' className={styles.radioLabel}>
+                <label className={styles.radioLabel}>
                     All
                     <input
                         type='radio'
                         name='filter'
-                        id='all'
+                        checked={filter === 'all'}
                         value='all'
+                        onChange={handleFilterChange}
                         className={styles.radioInput}
                     />
                 </label>
-                <label htmlFor='active' className={styles.radioLabel}>
+                <label className={styles.radioLabel}>
                     Active
                     <input
                         type='radio'
                         name='filter'
-                        id='active'
+                        checked={filter === 'active'}
                         value='active'
+                        onChange={handleFilterChange}
                         className={styles.radioInput}
                     />
                 </label>
-                <label htmlFor='complete' className={styles.radioLabel}>
+                <label className={styles.radioLabel}>
                     Complete
                     <input
                         type='radio'
                         name='filter'
-                        id='complete'
-                        value='active'
+                        checked={filter === 'complete'}
+                        value='complete'
+                        onChange={handleFilterChange}
                         className={styles.radioInput}
                     />
                 </label>
