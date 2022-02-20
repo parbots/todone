@@ -2,7 +2,11 @@ import styles from './AddItemForm.module.css';
 
 import { ChangeEvent, FormEvent, useState } from 'react';
 
-const AddItemForm = () => {
+type FormProps = {
+    addItem: Function;
+};
+
+const AddItemForm = ({ addItem }: FormProps) => {
     const [inputValue, setInputValue] = useState('');
     const [isValidName, setValidName] = useState(false);
 
@@ -15,7 +19,7 @@ const AddItemForm = () => {
         event.preventDefault();
 
         if (isValidName) {
-            // TODO: create item here
+            addItem(inputValue);
         }
 
         setInputValue('');

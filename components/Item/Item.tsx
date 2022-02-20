@@ -3,9 +3,10 @@ import styles from './Item.module.css';
 type ItemProps = {
     name: string;
     complete: boolean;
+    removeSelf: Function;
 };
 
-const Item = ({ name, complete }: ItemProps) => {
+const Item = ({ name, complete, removeSelf }: ItemProps) => {
     return (
         <li className={styles.item}>
             <input
@@ -15,7 +16,12 @@ const Item = ({ name, complete }: ItemProps) => {
                 className={styles.checkBox}
             />
             <p className={styles.itemName}>{name}</p>
-            <button className={styles.removeItemButton}>Remove</button>
+            <button
+                onClick={() => removeSelf()}
+                className={styles.removeItemButton}
+            >
+                Remove
+            </button>
         </li>
     );
 };
