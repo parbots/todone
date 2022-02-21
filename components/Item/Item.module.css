@@ -15,7 +15,7 @@
 
 .checkBox {
     position: absolute;
-    left: 1rem;
+    left: 0.5rem;
 
     width: 4rem;
     height: 4rem;
@@ -31,10 +31,10 @@
 
 .removeItemButton {
     position: absolute;
-    right: 0;
+    right: 0.5rem;
 
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
 
     cursor: pointer;
 
