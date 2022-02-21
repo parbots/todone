@@ -54,11 +54,11 @@ const App = () => {
     };
 
     // Complete an item
-    const completeItem = (idToComplete: string) => {
+    const toggleCompleteItem = (idToToggleComplete: string) => {
         setItems(
             items.map((item) => {
-                if (item.id === idToComplete) {
-                    item.complete = true;
+                if (item.id === idToToggleComplete) {
+                    item.complete = !item.complete;
                 }
 
                 return item;
@@ -85,7 +85,7 @@ const App = () => {
                     items={items}
                     filters={filters}
                     filter={itemFilter}
-                    completeItem={completeItem}
+                    toggleCompleteItem={toggleCompleteItem}
                     removeItem={removeItem}
                 />
             </section>

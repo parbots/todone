@@ -8,7 +8,7 @@ type ListProps = {
     items: ItemType[];
     filters: string[];
     filter: string;
-    completeItem: Function;
+    toggleCompleteItem: Function;
     removeItem: Function;
 };
 
@@ -16,7 +16,7 @@ const List = ({
     items,
     filters,
     filter,
-    completeItem,
+    toggleCompleteItem,
     removeItem,
 }: ListProps) => {
     const filteredItems = items.filter((item) => {
@@ -38,7 +38,7 @@ const List = ({
                         key={item.id}
                         name={item.name}
                         complete={item.complete}
-                        completeSelf={() => completeItem(item.id)}
+                        toggleCompleteSelf={() => toggleCompleteItem(item.id)}
                         removeSelf={() => removeItem(item.id)}
                     />
                 );

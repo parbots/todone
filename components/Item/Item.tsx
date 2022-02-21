@@ -1,6 +1,5 @@
 import styles from './Item.module.css';
 
-import { ChangeEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faSquare,
@@ -11,15 +10,20 @@ import {
 type ItemProps = {
     name: string;
     complete: boolean;
-    completeSelf: Function;
+    toggleCompleteSelf: Function;
     removeSelf: Function;
 };
 
-const Item = ({ name, complete, completeSelf, removeSelf }: ItemProps) => {
+const Item = ({
+    name,
+    complete,
+    toggleCompleteSelf,
+    removeSelf,
+}: ItemProps) => {
     return (
         <li className={styles.item}>
             <button
-                onClick={() => completeSelf()}
+                onClick={() => toggleCompleteSelf()}
                 className={styles.completeItemButton}
             >
                 <FontAwesomeIcon
@@ -28,8 +32,9 @@ const Item = ({ name, complete, completeSelf, removeSelf }: ItemProps) => {
                     className={styles.completeItemIcon}
                 />
             </button>
-
-            <p className={styles.itemName}>{name}</p>
+            <p className={styles.itemName} data-complete={complete.toString()}>
+                {name}
+            </p>
             <button
                 onClick={() => removeSelf()}
                 className={styles.removeItemButton}
