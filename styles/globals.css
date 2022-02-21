@@ -3,6 +3,8 @@ body {
     --background-color: #1b263b;
     --highlight-color: #415a77;
 
+    --shadow: 0.5rem 0.5rem 1rem rgba(20, 20, 20, 0.6);
+
     color: var(--color);
     background-color: var(--background-color);
 }

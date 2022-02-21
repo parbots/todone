@@ -11,6 +11,8 @@
 
     color: var(--color);
     background-color: var(--highlight-color);
+
+    box-shadow: var(--shadow);
 }
 
 .checkBox {
