@@ -8,12 +8,9 @@ type FormProps = {
 
 const AddItemForm = ({ addItem }: FormProps) => {
     const [inputValue, setInputValue] = useState('');
-    const [valid, setValid] = useState(false);
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        if (!valid && event.target.value !== '' && event.target.value !== ' ') {
-            setValid(true);
-        }
+        event.preventDefault();
 
         setInputValue(event.target.value);
     };
@@ -21,9 +18,13 @@ const AddItemForm = ({ addItem }: FormProps) => {
     const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if (valid) {
+        // TODO: add user feedback for invalid input
+        if (
+            inputValue.length > 0 &&
+            inputValue !== '' &&
+            inputValue[0] !== ' '
+        ) {
             addItem(inputValue);
-            setValid(false);
         }
 
         setInputValue('');
@@ -37,6 +38,8 @@ const AddItemForm = ({ addItem }: FormProps) => {
                 placeholder='Add new todo...'
                 value={inputValue}
                 onChange={handleInputChange}
+                minLength={1}
+                maxLength={60}
                 className={styles.itemInput}
             />
             <button type='submit' className={styles.addItemButton}>
