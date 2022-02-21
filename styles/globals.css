@@ -1,7 +1,8 @@
 body {
-    --color: #e0e1dd;
-    --background-color: #1b263b;
-    --highlight-color: #415a77;
+    --color: #f1faee;
+    --background-color: #1d3557;
+    --highlight-color: #457b9d;
+    --red: #e63946;
 
     --shadow: 0.5rem 0.5rem 1rem rgba(20, 20, 20, 0.6);
 

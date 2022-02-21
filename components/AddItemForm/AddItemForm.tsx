@@ -1,6 +1,8 @@
 import styles from './AddItemForm.module.css';
 
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent, isValidElement } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 
 type FormProps = {
     addItem: Function;
@@ -8,6 +10,14 @@ type FormProps = {
 
 const AddItemForm = ({ addItem }: FormProps) => {
     const [inputValue, setInputValue] = useState('');
+
+    const isEmpty = () => {
+        return inputValue === '';
+    };
+
+    const isValid = () => {
+        return inputValue[0] !== ' ';
+    };
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -18,12 +28,7 @@ const AddItemForm = ({ addItem }: FormProps) => {
     const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        // TODO: add user feedback for invalid input
-        if (
-            inputValue.length > 0 &&
-            inputValue !== '' &&
-            inputValue[0] !== ' '
-        ) {
+        if (!isEmpty() && isValid()) {
             addItem(inputValue);
         }
 
@@ -31,7 +36,12 @@ const AddItemForm = ({ addItem }: FormProps) => {
     };
 
     return (
-        <form onSubmit={handleFormSubmit} className={styles.form}>
+        <form
+            onSubmit={handleFormSubmit}
+            data-empty={isEmpty().toString()}
+            data-valid={isValid().toString()}
+            className={styles.form}
+        >
             <input
                 type='text'
                 name='itemInput'
@@ -43,7 +53,11 @@ const AddItemForm = ({ addItem }: FormProps) => {
                 className={styles.itemInput}
             />
             <button type='submit' className={styles.addItemButton}>
-                Add
+                <FontAwesomeIcon
+                    icon={faPlusSquare}
+                    fixedWidth
+                    className={styles.addItemIcon}
+                />
             </button>
         </form>
     );
