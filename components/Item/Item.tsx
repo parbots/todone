@@ -14,8 +14,6 @@ const Item = ({ name, complete, completeSelf, removeSelf }: ItemProps) => {
         if (!complete) {
             completeSelf();
         }
-
-        event.preventDefault();
     };
 
     return (

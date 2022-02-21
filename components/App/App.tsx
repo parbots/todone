@@ -59,13 +59,13 @@ const App = () => {
     const completeItem = (idToComplete: number) => {
         setItems(
             items.map((item) => {
-                return item.id === idToComplete
-                    ? { id: itemID, name: item.name, complete: true }
-                    : item;
+                if (item.id === idToComplete) {
+                    item.complete = true;
+                }
+
+                return item;
             })
         );
-
-        setItemID(itemID + 1);
     };
 
     return (
