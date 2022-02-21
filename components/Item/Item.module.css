@@ -38,16 +38,40 @@
     width: 4rem;
     height: 4rem;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     cursor: pointer;
 
-    border: solid 2px var(--color);
+    border: none;
     border-radius: 10px;
 
-    color: var(--color);
-    background-color: var(--highlight-color);
+    background: none;
+
+    transform: scale(0);
+    transform-origin: right;
+
+    transition: transform 0.3s;
 }
 
-.removeItemButton:hover {
+.item:hover .removeItemButton {
+    transform: scale(1);
+}
+
+.removeItemIcon {
+    width: 4rem;
+    height: 4rem;
+
+    font-size: 4rem;
+
+    border-radius: 10px;
+
     color: var(--highlight-color);
     background-color: var(--color);
+}
+
+.removeItemButton:hover .removeItemIcon {
+    color: var(--red);
+    background-color: var(--highlight-color);
 }

@@ -40,7 +40,7 @@
     position: absolute;
     right: 0.5rem;
 
-    width: 0;
+    width: 4rem;
     height: 4rem;
 
     display: flex;
@@ -52,21 +52,31 @@
     border: none;
     border-radius: 10px;
 
-    color: var(--color);
-    background-color: var(--highlight-color);
+    background: none;
 
-    transition: width 0.3s;
+    transform: scale(0);
+    transform-origin: right;
+
+    transition: transform 0.3s;
 }
 
 .form[data-empty='false'][data-valid='true'] .addItemButton {
-    width: 4rem;
+    transform: scale(1);
 }
 
 .addItemIcon {
     width: 4rem;
-    height: 5rem;
+    height: 4rem;
 
     font-size: 4rem;
 
     border-radius: 10px;
+
+    color: var(--highlight-color);
+    background-color: var(--color);
+}
+
+.addItemButton:hover .addItemIcon {
+    color: var(--color);
+    background-color: var(--highlight-color);
 }

@@ -2,7 +2,7 @@ import styles from './AddItemForm.module.css';
 
 import { useState, ChangeEvent, FormEvent, isValidElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 type FormProps = {
     addItem: Function;

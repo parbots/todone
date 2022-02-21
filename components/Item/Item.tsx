@@ -1,6 +1,8 @@
 import styles from './Item.module.css';
 
 import { ChangeEvent } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmarkSquare } from '@fortawesome/free-solid-svg-icons';
 
 type ItemProps = {
     name: string;
@@ -30,7 +32,11 @@ const Item = ({ name, complete, completeSelf, removeSelf }: ItemProps) => {
                 onClick={() => removeSelf()}
                 className={styles.removeItemButton}
             >
-                X
+                <FontAwesomeIcon
+                    icon={faXmarkSquare}
+                    fixedWidth
+                    className={styles.removeItemIcon}
+                />
             </button>
         </li>
     );
