@@ -8,8 +8,9 @@ import AddItemForm from 'components/AddItemForm';
 import List from 'components/List';
 import ListOptions from 'components/ListOptions';
 
+import { v1 as uuid } from 'uuid';
+
 const App = () => {
-    const [itemID, setItemID] = useState(0); // ID counter
     const [items, setItems] = useState<ItemType[]>([]); // List of items
 
     // Item filters
@@ -22,18 +23,15 @@ const App = () => {
         setItems([
             ...items,
             {
-                id: itemID,
+                id: uuid(),
                 name: name,
                 complete: false,
             },
         ]);
-
-        // TODO: Generate random keys
-        setItemID(itemID + 1);
     };
 
     // Remove an item
-    const removeItem = (idToRemove: number) => {
+    const removeItem = (idToRemove: string) => {
         setItems(
             items.filter((item) => {
                 return item.id !== idToRemove;
@@ -56,7 +54,7 @@ const App = () => {
     };
 
     // Complete an item
-    const completeItem = (idToComplete: number) => {
+    const completeItem = (idToComplete: string) => {
         setItems(
             items.map((item) => {
                 if (item.id === idToComplete) {

@@ -1,6 +1,6 @@
 import styles from './Item.module.css';
 
-import { useState, ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 
 type ItemProps = {
     name: string;

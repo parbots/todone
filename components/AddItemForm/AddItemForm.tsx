@@ -1,6 +1,6 @@
 import styles from './AddItemForm.module.css';
 
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 
 type FormProps = {
     addItem: Function;
