@@ -2,7 +2,11 @@ import styles from './Item.module.css';
 
 import { ChangeEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmarkSquare } from '@fortawesome/free-solid-svg-icons';
+import {
+    faSquare,
+    faCheckSquare,
+    faXmarkSquare,
+} from '@fortawesome/free-solid-svg-icons';
 
 type ItemProps = {
     name: string;
@@ -12,21 +16,20 @@ type ItemProps = {
 };
 
 const Item = ({ name, complete, completeSelf, removeSelf }: ItemProps) => {
-    const handleCheckbox = (event: ChangeEvent<HTMLInputElement>) => {
-        if (!complete) {
-            completeSelf();
-        }
-    };
-
     return (
         <li className={styles.item}>
-            <input
-                type='checkbox'
-                name='complete'
-                checked={complete}
-                onChange={handleCheckbox}
-                className={styles.checkBox}
-            />
+            <button
+                onClick={() => completeSelf()}
+                disabled={complete}
+                className={styles.completeItemButton}
+            >
+                <FontAwesomeIcon
+                    icon={complete ? faCheckSquare : faSquare}
+                    fixedWidth
+                    className={styles.completeItemIcon}
+                />
+            </button>
+
             <p className={styles.itemName}>{name}</p>
             <button
                 onClick={() => removeSelf()}
