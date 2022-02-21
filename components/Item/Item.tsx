@@ -20,7 +20,6 @@ const Item = ({ name, complete, completeSelf, removeSelf }: ItemProps) => {
         <li className={styles.item}>
             <button
                 onClick={() => completeSelf()}
-                disabled={complete}
                 className={styles.completeItemButton}
             >
                 <FontAwesomeIcon

@@ -50,6 +50,10 @@
     background-color: var(--color);
 }
 
+.completeItemButton:hover .completeItemIcon {
+    background-color: var(--selected);
+}
+
 .itemName {
     padding: 1rem 6rem;
 }
@@ -95,6 +99,5 @@
 }
 
 .removeItemButton:hover .removeItemIcon {
-    color: var(--red);
-    background-color: var(--highlight-color);
+    background-color: var(--red);
 }

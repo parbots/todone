@@ -3,6 +3,7 @@ body {
     --background-color: #1d3557;
     --highlight-color: #457b9d;
     --red: #e63946;
+    --selected: #a8dadc;
 
     --shadow: 0.5rem 0.5rem 1rem rgba(20, 20, 20, 0.6);
 
