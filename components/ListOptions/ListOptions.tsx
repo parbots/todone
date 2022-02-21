@@ -45,7 +45,10 @@ const ListOptions = ({
 
     return (
         <fieldset className={styles.listOptions}>
-            <section className={styles.section}>Filter: {filterRadios}</section>
+            <section className={styles.section}>
+                <p>Filter: </p>
+                {filterRadios}
+            </section>
             <section className={styles.section}>
                 <button
                     onClick={() => removeComplete()}
