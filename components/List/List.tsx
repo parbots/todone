@@ -5,15 +5,15 @@ import { ItemType } from 'types/Item';
 import Item from 'components/Item';
 
 type ListProps = {
-    filteredItems: ItemType[];
+    items: ItemType[];
     toggleCompleteItem: Function;
     removeItem: Function;
 };
 
-const List = ({ filteredItems, toggleCompleteItem, removeItem }: ListProps) => {
+const List = ({ items, toggleCompleteItem, removeItem }: ListProps) => {
     return (
         <ul className={styles.list}>
-            {filteredItems.map((item) => {
+            {items.map((item) => {
                 return (
                     <Item
                         key={item.id}

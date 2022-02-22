@@ -1,9 +1,13 @@
 import styles from './ListOptions.module.css';
 
+import { ChangeEvent } from 'react';
+
 type OptionsProps = {
     filters: string[];
     currentFilter: string;
     setFilter: Function;
+    search: string;
+    setSearch: Function;
     removeAll: Function;
     removeComplete: Function;
 };
@@ -12,10 +16,18 @@ const ListOptions = ({
     filters,
     currentFilter,
     setFilter,
+    search,
+    setSearch,
     removeAll,
     removeComplete,
 }: OptionsProps) => {
-    const filterRadios = filters.map((filter, i) => {
+    const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault();
+
+        setSearch(event.target.value);
+    };
+
+    const filterButtons = filters.map((filter) => {
         const selected = currentFilter === filter;
         return (
             <button
@@ -32,8 +44,14 @@ const ListOptions = ({
     return (
         <fieldset className={styles.listOptions}>
             <section className={styles.section}>
+                <input
+                    type='text'
+                    placeholder='Search...'
+                    value={search}
+                    onChange={handleSearch}
+                />
                 <p>Filter: </p>
-                {filterRadios}
+                {filterButtons}
             </section>
             <section className={styles.section}>
                 <button

@@ -21,6 +21,10 @@ const App = () => {
     // List of filtered items
     const [filteredItems, setFilteredItems] = useState([...items]);
 
+    // Value to search if currentItemFilter is Search
+    const [search, setSearch] = useState('');
+    const [searchedItems, setSearchedItems] = useState([...items]);
+
     // Create a new item
     const addItem = (name: string) => {
         setItems([
@@ -35,6 +39,8 @@ const App = () => {
         if (currentItemFilter === 'Complete') {
             setCurrentItemFilter('All');
         }
+
+        setSearch('');
     };
 
     // Remove an item
@@ -75,8 +81,8 @@ const App = () => {
 
     // Filter items if items or currentItemFilter is changed
     useEffect(() => {
-        setFilteredItems([
-            ...items.filter((item) => {
+        setFilteredItems(
+            items.filter((item) => {
                 switch (currentItemFilter) {
                     case 'All':
                         return true;
@@ -85,9 +91,18 @@ const App = () => {
                     case 'Complete':
                         return item.complete;
                 }
-            }),
-        ]);
+            })
+        );
     }, [items, currentItemFilter]);
+
+    // Search filtered items
+    useEffect(() => {
+        setSearchedItems(
+            filteredItems.filter((item) => {
+                return item.name.toLowerCase().includes(search.toLowerCase());
+            })
+        );
+    }, [filteredItems, search]);
 
     return (
         <>
@@ -99,13 +114,15 @@ const App = () => {
                     filters={itemFilters}
                     currentFilter={currentItemFilter}
                     setFilter={setCurrentItemFilter}
+                    search={search}
+                    setSearch={setSearch}
                     removeAll={removeAllItems}
                     removeComplete={removeCompleteItems}
                 />
             </section>
             <section className={styles.section}>
                 <List
-                    filteredItems={filteredItems}
+                    items={searchedItems}
                     toggleCompleteItem={toggleCompleteItem}
                     removeItem={removeItem}
                 />
