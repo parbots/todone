@@ -20,22 +20,23 @@
 
     padding: 1rem;
 
+    outline-offset: 0px;
+
     border: none;
     border-radius: 10px;
-
-    outline-offset: 0px;
 
     color: var(--color);
     background-color: var(--highlight-color);
 
-    transition: outline-color 0.2s;
+    transition: outline 0.2s;
 }
 
-.form[data-valid='false'] .itemInput:focus-visible {
+.form[data-valid='false'] {
     outline: solid 2px var(--red);
 }
 
-.form[data-valid='true'] .itemInput:focus-visible {
+.form[data-valid='true'] .itemInput:focus-visible,
+.itemInput:hover {
     outline: solid 2px var(--color);
 }
 
