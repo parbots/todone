@@ -25,6 +25,7 @@ const Item = ({
             <button
                 onClick={() => toggleCompleteSelf()}
                 className={styles.completeItemButton}
+                aria-label='Complete Todo Toggle Button'
             >
                 <FontAwesomeIcon
                     icon={complete ? faCheckSquare : faSquare}
@@ -38,6 +39,7 @@ const Item = ({
             <button
                 onClick={() => removeSelf()}
                 className={styles.removeItemButton}
+                aria-label='Remove Todo Button'
             >
                 <FontAwesomeIcon
                     icon={faXmarkSquare}

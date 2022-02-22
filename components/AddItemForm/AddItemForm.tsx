@@ -53,7 +53,11 @@ const AddItemForm = ({ addItem }: FormProps) => {
                 maxLength={60}
                 className={styles.itemInput}
             />
-            <button type='submit' className={styles.addItemButton}>
+            <button
+                type='submit'
+                className={styles.addItemButton}
+                aria-label='Add Todo Button'
+            >
                 <FontAwesomeIcon
                     icon={faPlusSquare}
                     fixedWidth
