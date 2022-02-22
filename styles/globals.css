@@ -78,6 +78,13 @@ h6 {
     isolation: isolate;
 }
 
+:focus-visible {
+    outline-style: dashed;
+    outline-offset: 0.25rem;
+    outline-width: 2px;
+    outline-color: var(--color);
+}
+
 @media (prefers-reduced-motion: reduce) {
     html:focus-within {
         scroll-behavior: auto;

@@ -23,17 +23,19 @@
     border: none;
     border-radius: 10px;
 
+    outline-offset: 0px;
+
     color: var(--color);
     background-color: var(--highlight-color);
 
     transition: outline-color 0.2s;
 }
 
-.form[data-valid='false'] .itemInput:focus {
+.form[data-valid='false'] .itemInput:focus-visible {
     outline: solid 2px var(--red);
 }
 
-.form[data-valid='true'] .itemInput:focus {
+.form[data-valid='true'] .itemInput:focus-visible {
     outline: solid 2px var(--color);
 }
 
@@ -61,6 +63,7 @@
     transition: transform 0.3s;
 }
 
+.addItemButton:focus-visible,
 .form[data-empty='false'][data-valid='true'] .addItemButton {
     transform: scale(1);
 }
@@ -79,6 +82,7 @@
     transition: background-color 0.2s;
 }
 
+.addItemButton:focus-visible .addItemIcon,
 .addItemButton:hover .addItemIcon {
     background-color: var(--selected);
 }

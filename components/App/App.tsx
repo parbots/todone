@@ -14,9 +14,9 @@ const App = () => {
     const [items, setItems] = useState<ItemType[]>([]); // List of items
 
     // Item filters
-    const [filters, _] = useState(['All', 'Active', 'Complete']);
+    const [itemFilters] = useState(['All', 'Active', 'Complete']);
     // Current Item filter
-    const [itemFilter, setItemFilter] = useState(filters[0]);
+    const [currentItemFilter, setCurrentItemFilter] = useState(itemFilters[0]);
 
     // Create a new item
     const addItem = (name: string) => {
@@ -73,9 +73,9 @@ const App = () => {
             </section>
             <section className={styles.section}>
                 <ListOptions
-                    filters={filters}
-                    filter={itemFilter}
-                    setFilter={setItemFilter}
+                    filters={itemFilters}
+                    currentFilter={currentItemFilter}
+                    setFilter={setCurrentItemFilter}
                     removeAll={removeAllItems}
                     removeComplete={removeCompleteItems}
                 />
@@ -83,8 +83,8 @@ const App = () => {
             <section className={styles.section}>
                 <List
                     items={items}
-                    filters={filters}
-                    filter={itemFilter}
+                    filters={itemFilters}
+                    filter={currentItemFilter}
                     toggleCompleteItem={toggleCompleteItem}
                     removeItem={removeItem}
                 />

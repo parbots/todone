@@ -1,10 +1,8 @@
 import styles from './ListOptions.module.css';
 
-import { ChangeEvent } from 'react';
-
 type OptionsProps = {
     filters: string[];
-    filter: string;
+    currentFilter: string;
     setFilter: Function;
     removeAll: Function;
     removeComplete: Function;
@@ -12,34 +10,22 @@ type OptionsProps = {
 
 const ListOptions = ({
     filters,
-    filter,
+    currentFilter,
     setFilter,
     removeAll,
     removeComplete,
 }: OptionsProps) => {
-    const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setFilter(event.target.value);
-    };
-
-    const filterRadios = filters.map((radioFilter) => {
-        const selected = filter === radioFilter;
+    const filterRadios = filters.map((filter, i) => {
+        const selected = currentFilter === filter;
         return (
-            <label
-                key={radioFilter}
-                className={`${styles.radioLabel} ${
-                    selected ? styles.radioLabelSelected : ''
-                }`}
+            <button
+                key={filter}
+                data-selected={selected.toString()}
+                onClick={() => setFilter(filter)}
+                className={styles.filterButton}
             >
-                {radioFilter}
-                <input
-                    type='radio'
-                    name='filter'
-                    checked={selected}
-                    value={radioFilter}
-                    onChange={handleFilterChange}
-                    className={styles.radioInput}
-                />
-            </label>
+                {filter}
+            </button>
         );
     });
 
