@@ -58,7 +58,9 @@ const ListOptions = ({
                 </button>
                 <button
                     onClick={() => removeAll()}
-                    className={styles.actionButton}
+                    className={
+                        styles.actionButton + ' ' + styles.clearAllButton
+                    }
                 >
                     Clear All
                 </button>

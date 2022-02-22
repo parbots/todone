@@ -74,6 +74,8 @@
 
     color: var(--highlight-color);
     background-color: var(--color);
+
+    transition: background-color 0.2s;
 }
 
 .addItemButton:hover .addItemIcon {

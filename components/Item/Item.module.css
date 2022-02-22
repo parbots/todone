@@ -41,6 +41,8 @@
 
     color: var(--highlight-color);
     background-color: var(--color);
+
+    transition: background-color 0.2s;
 }
 
 .completeItemButton:hover .completeItemIcon {
@@ -121,6 +123,8 @@
 
     color: var(--highlight-color);
     background-color: var(--color);
+
+    transition: background-color 0.2s;
 }
 
 .removeItemButton:hover .removeItemIcon {

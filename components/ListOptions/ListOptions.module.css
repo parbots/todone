@@ -44,10 +44,17 @@
     border-radius: 10px;
 
     color: var(--color);
-    background-color: var(--highlight-color);
+    background: none;
+
+    transition: color 0.2s, border-color 0.2s;
 }
 
 .actionButton:hover {
-    color: var(--highlight-color);
-    background-color: var(--color);
+    color: var(--selected);
+    border-color: var(--selected);
+}
+
+.clearAllButton:hover {
+    color: var(--red);
+    border-color: var(--red);
 }
