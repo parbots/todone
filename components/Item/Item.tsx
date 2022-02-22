@@ -1,7 +1,5 @@
 import styles from './Item.module.css';
 
-import { useEffect } from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faSquare,

@@ -1,6 +1,6 @@
 import styles from './ListOptions.module.css';
 
-import { useState, ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 
 type OptionsProps = {
     filters: string[];
