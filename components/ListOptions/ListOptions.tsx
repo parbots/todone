@@ -44,18 +44,20 @@ const ListOptions = ({
     return (
         <fieldset className={styles.listOptions}>
             <section className={styles.searchSection}>
-                <input
-                    type='text'
-                    placeholder='search'
-                    maxLength={20}
-                    data-empty={(search.length === 0).toString()}
-                    value={search}
-                    onChange={handleSearch}
-                    className={styles.searchInput}
-                />
+                <section className={styles.searchBar}>
+                    <input
+                        type='text'
+                        placeholder='search'
+                        maxLength={20}
+                        data-empty={(search.length === 0).toString()}
+                        value={search}
+                        onChange={handleSearch}
+                        className={styles.searchInput}
+                    />
+                </section>
                 <section className={styles.filterSection}>
                     <p>Filter: </p>
-                    {filterButtons}
+                    <ul className={styles.filterList}>{filterButtons}</ul>
                 </section>
             </section>
             <section className={styles.actionSection}>
