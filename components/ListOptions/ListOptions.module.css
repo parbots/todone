@@ -14,7 +14,6 @@
 }
 
 .section {
-    width: 60vw;
     height: 5rem;
 
     display: flex;
@@ -57,4 +56,11 @@
 .clearAllButton:hover {
     color: var(--red);
     border-color: var(--red);
+}
+
+@media (max-width: 700px) {
+    .clearAllButton {
+        color: var(--red);
+        border-color: var(--red);
+    }
 }

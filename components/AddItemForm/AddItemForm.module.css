@@ -1,7 +1,6 @@
 .form {
     position: relative;
 
-    width: 60vw;
     height: 5rem;
 
     display: flex;
@@ -26,9 +25,11 @@
 
     color: var(--color);
     background-color: var(--highlight-color);
+
+    transition: outline-color 0.2s;
 }
 
-.form .itemInput:focus {
+.form[data-valid='false'] .itemInput:focus {
     outline: solid 2px var(--red);
 }
 
@@ -80,4 +81,14 @@
 
 .addItemButton:hover .addItemIcon {
     background-color: var(--selected);
+}
+
+@media (max-width: 700px) {
+    .addItemButton {
+        transform: scale(1);
+    }
+
+    .form[data-valid='false'] .addItemButton .addItemIcon {
+        background-color: var(--red);
+    }
 }

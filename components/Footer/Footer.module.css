@@ -13,3 +13,9 @@
 .copyright {
     font-size: 12px;
 }
+
+@media (max-width: 700px) {
+    .footer {
+        width: 95vw;
+    }
+}

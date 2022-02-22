@@ -1,5 +1,4 @@
 .item {
-    width: 60vw;
     height: 5rem;
 
     display: flex;
@@ -129,4 +128,14 @@
 
 .removeItemButton:hover .removeItemIcon {
     background-color: var(--red);
+}
+
+@media (max-width: 700px) {
+    .removeItemButton {
+        transform: scale(1);
+    }
+
+    .removeItemIcon {
+        background-color: var(--red);
+    }
 }
