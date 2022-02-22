@@ -5,31 +5,12 @@ import { ItemType } from 'types/Item';
 import Item from 'components/Item';
 
 type ListProps = {
-    items: ItemType[];
-    filters: string[];
-    filter: string;
+    filteredItems: ItemType[];
     toggleCompleteItem: Function;
     removeItem: Function;
 };
 
-const List = ({
-    items,
-    filters,
-    filter,
-    toggleCompleteItem,
-    removeItem,
-}: ListProps) => {
-    const filteredItems = items.filter((item) => {
-        switch (filter) {
-            case filters[0]:
-                return true;
-            case filters[1]:
-                return !item.complete;
-            case filters[2]:
-                return item.complete;
-        }
-    });
-
+const List = ({ filteredItems, toggleCompleteItem, removeItem }: ListProps) => {
     return (
         <ul className={styles.list}>
             {filteredItems.map((item) => {

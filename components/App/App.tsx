@@ -28,6 +28,10 @@ const App = () => {
                 complete: false,
             },
         ]);
+
+        if (currentItemFilter === 'Complete') {
+            setCurrentItemFilter('All');
+        }
     };
 
     // Remove an item
@@ -66,6 +70,19 @@ const App = () => {
         );
     };
 
+    const filterItems = () => {
+        return items.filter((item) => {
+            switch (currentItemFilter) {
+                case 'All':
+                    return true;
+                case 'Active':
+                    return !item.complete;
+                case 'Complete':
+                    return item.complete;
+            }
+        });
+    };
+
     return (
         <>
             <section className={styles.sections}>
@@ -82,9 +99,7 @@ const App = () => {
             </section>
             <section className={styles.section}>
                 <List
-                    items={items}
-                    filters={itemFilters}
-                    filter={currentItemFilter}
+                    filteredItems={filterItems()}
                     toggleCompleteItem={toggleCompleteItem}
                     removeItem={removeItem}
                 />
