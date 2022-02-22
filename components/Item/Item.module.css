@@ -78,12 +78,12 @@
 
     transform: scaleX(0);
     transform-origin: left;
+
+    transition: transform 0.3s;
 }
 
 .item[data-complete='true'] .itemName::after {
     transform: scaleX(1);
-
-    transition: transform 0.3s;
 }
 
 .removeItemButton {
