@@ -43,17 +43,22 @@ const ListOptions = ({
 
     return (
         <fieldset className={styles.listOptions}>
-            <section className={styles.section}>
+            <section className={styles.searchSection}>
                 <input
                     type='text'
-                    placeholder='Search...'
+                    placeholder='search'
+                    maxLength={20}
+                    data-empty={(search.length === 0).toString()}
                     value={search}
                     onChange={handleSearch}
+                    className={styles.searchInput}
                 />
-                <p>Filter: </p>
-                {filterButtons}
+                <section className={styles.filterSection}>
+                    <p>Filter: </p>
+                    {filterButtons}
+                </section>
             </section>
-            <section className={styles.section}>
+            <section className={styles.actionSection}>
                 <button
                     onClick={() => removeComplete()}
                     className={styles.actionButton}
@@ -62,9 +67,7 @@ const ListOptions = ({
                 </button>
                 <button
                     onClick={() => removeAll()}
-                    className={
-                        styles.actionButton + ' ' + styles.clearAllButton
-                    }
+                    className={`${styles.actionButton} ${styles.clearAllButton}`}
                 >
                     Clear All
                 </button>
