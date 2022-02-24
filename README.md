@@ -1,3 +1,3 @@
 # ToDone
 
-Get your TODOs done.
+Get your todo list... done.
