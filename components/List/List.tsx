@@ -1,26 +1,26 @@
 import styles from './List.module.css';
 
-import { ItemType } from 'types/Item';
+import { Task } from 'types/task';
 
 import Item from 'components/Item';
 
 type ListProps = {
-    items: ItemType[];
-    toggleCompleteItem: Function;
-    removeItem: Function;
+    tasks: Task[];
+    toggleCompleteTask: Function;
+    removeTask: Function;
 };
 
-const List = ({ items, toggleCompleteItem, removeItem }: ListProps) => {
+const List = ({ tasks, toggleCompleteTask, removeTask }: ListProps) => {
     return (
         <ul className={styles.list}>
-            {items.map((item) => {
+            {tasks.map((task) => {
                 return (
                     <Item
-                        key={item.id}
-                        name={item.name}
-                        complete={item.complete}
-                        toggleCompleteSelf={() => toggleCompleteItem(item.id)}
-                        removeSelf={() => removeItem(item.id)}
+                        key={task.id}
+                        name={task.name}
+                        complete={task.complete}
+                        toggleCompleteSelf={() => toggleCompleteTask(task)}
+                        removeSelf={() => removeTask(task)}
                     />
                 );
             })}

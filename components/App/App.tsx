@@ -12,7 +12,7 @@ const App = () => {
     return (
         <>
             <section className={styles.sections}>
-                <AddItemForm addItem={tasks.add} />
+                <AddItemForm addNewTask={tasks.add} />
             </section>
             <section className={styles.section}>
                 <ListOptions
@@ -21,15 +21,15 @@ const App = () => {
                     setFilter={filter.setCurrent}
                     search={search.value}
                     setSearch={search.set}
-                    removeAll={tasks.clear}
-                    removeComplete={tasks.clearComplete}
+                    clearTasks={tasks.clear}
+                    clearCompleteTasks={tasks.clearComplete}
                 />
             </section>
             <section className={styles.section}>
                 <List
-                    items={tasks.list}
-                    toggleCompleteItem={tasks.toggleComplete}
-                    removeItem={tasks.remove}
+                    tasks={tasks.list}
+                    toggleCompleteTask={tasks.toggleComplete}
+                    removeTask={tasks.remove}
                 />
             </section>
         </>

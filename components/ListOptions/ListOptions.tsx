@@ -8,8 +8,8 @@ type OptionsProps = {
     setFilter: Function;
     search: string;
     setSearch: Function;
-    removeAll: Function;
-    removeComplete: Function;
+    clearTasks: Function;
+    clearCompleteTasks: Function;
 };
 
 const ListOptions = ({
@@ -18,8 +18,8 @@ const ListOptions = ({
     setFilter,
     search,
     setSearch,
-    removeAll,
-    removeComplete,
+    clearTasks,
+    clearCompleteTasks,
 }: OptionsProps) => {
     const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -28,7 +28,7 @@ const ListOptions = ({
     };
 
     const filterButtons = filters.map((filter) => {
-        const selected = currentFilter === filter;
+        const selected = filter === currentFilter;
         return (
             <button
                 key={filter}
@@ -62,13 +62,13 @@ const ListOptions = ({
             </section>
             <section className={styles.actionSection}>
                 <button
-                    onClick={() => removeComplete()}
+                    onClick={() => clearCompleteTasks()}
                     className={styles.actionButton}
                 >
                     Clear Complete
                 </button>
                 <button
-                    onClick={() => removeAll()}
+                    onClick={() => clearTasks()}
                     className={`${styles.actionButton} ${styles.clearAllButton}`}
                 >
                     Clear All

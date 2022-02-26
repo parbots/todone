@@ -6,10 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 type FormProps = {
-    addItem: Function;
+    addNewTask: Function;
 };
 
-const AddItemForm = ({ addItem }: FormProps) => {
+const AddItemForm = ({ addNewTask }: FormProps) => {
     const [inputValue, setInputValue] = useState('');
 
     const isEmpty = () => {
@@ -30,7 +30,7 @@ const AddItemForm = ({ addItem }: FormProps) => {
         event.preventDefault();
 
         if (!isEmpty() && isValid()) {
-            addItem(inputValue);
+            addNewTask(inputValue);
         }
 
         setInputValue('');
