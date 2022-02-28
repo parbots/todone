@@ -20,6 +20,7 @@ const App = () => {
                 tasks.set(parsedTasks);
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
