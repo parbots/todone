@@ -5,9 +5,26 @@ import List from 'components/List';
 import ListOptions from 'components/ListOptions';
 
 import { useTasks } from '../../hooks/tasks';
+import { useEffect } from 'react';
 
 const App = () => {
     const [tasks, filter, search] = useTasks([]);
+
+    useEffect(() => {
+        const tasksString = localStorage.getItem('tasks');
+
+        if (tasksString) {
+            const parsedTasks = JSON.parse(tasksString);
+
+            if (parsedTasks) {
+                tasks.set(parsedTasks);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('tasks', JSON.stringify(tasks.list));
+    }, [tasks.list]);
 
     return (
         <>
@@ -27,7 +44,7 @@ const App = () => {
             </section>
             <section className={styles.section}>
                 <List
-                    tasks={tasks.list}
+                    tasks={search.list}
                     toggleCompleteTask={tasks.toggleComplete}
                     removeTask={tasks.remove}
                 />

@@ -12,6 +12,7 @@ type TaskHook = [
         toggleComplete: Function;
         clear: Function;
         clearComplete: Function;
+        set: Function;
     },
     {
         list: string[];
@@ -19,6 +20,7 @@ type TaskHook = [
         setCurrent: Function;
     },
     {
+        list: Task[];
         value: string;
         set: Function;
     }
@@ -118,12 +120,13 @@ export const useTasks = (initialTasks: Task[]): TaskHook => {
 
     return [
         {
-            list: searchedTasks,
+            list: tasks,
             add: addNewTask,
             remove: removeTask,
             toggleComplete: toggleCompleteTask,
             clear: removeAllTasks,
             clearComplete: removeCompleteTasks,
+            set: setTasks,
         },
         {
             list: filters,
@@ -131,6 +134,7 @@ export const useTasks = (initialTasks: Task[]): TaskHook => {
             setCurrent: setCurrentFilter,
         },
         {
+            list: searchedTasks,
             value: search,
             set: setSearch,
         },
