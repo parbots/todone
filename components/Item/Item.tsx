@@ -7,19 +7,14 @@ import {
     faXmarkSquare,
 } from '@fortawesome/free-solid-svg-icons';
 
-type ItemProps = {
+type Props = {
     name: string;
     complete: boolean;
-    toggleCompleteSelf: Function;
-    removeSelf: Function;
+    toggleCompleteSelf: () => void;
+    removeSelf: () => void;
 };
 
-const Item = ({
-    name,
-    complete,
-    toggleCompleteSelf,
-    removeSelf,
-}: ItemProps) => {
+const Item = ({ name, complete, toggleCompleteSelf, removeSelf }: Props) => {
     return (
         <li data-complete={complete.toString()} className={styles.item}>
             <button

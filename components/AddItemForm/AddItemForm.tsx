@@ -1,15 +1,16 @@
 import styles from './AddItemForm.module.css';
 
-import { useState, ChangeEvent, FormEvent } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
+import { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
-type FormProps = {
-    addNewTask: Function;
+type Props = {
+    addNewTask: (newTaskName: string) => void;
 };
 
-const AddItemForm = ({ addNewTask }: FormProps) => {
+const AddItemForm = ({ addNewTask }: Props) => {
     const [inputValue, setInputValue] = useState('');
 
     const isEmpty = () => {
@@ -29,11 +30,10 @@ const AddItemForm = ({ addNewTask }: FormProps) => {
     const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        if (!isEmpty() && isValid()) {
+        if (isValid() && !isEmpty()) {
             addNewTask(inputValue);
+            setInputValue('');
         }
-
-        setInputValue('');
     };
 
     return (

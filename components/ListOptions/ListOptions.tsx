@@ -1,39 +1,40 @@
 import styles from './ListOptions.module.css';
 
-import { ChangeEvent } from 'react';
+import type { ChangeEvent } from 'react';
 
-type OptionsProps = {
-    filters: string[];
-    currentFilter: string;
-    setFilter: Function;
-    search: string;
-    setSearch: Function;
-    clearTasks: Function;
-    clearCompleteTasks: Function;
+import type { Filter } from 'types/task';
+import { Filters } from 'types/task';
+
+type Props = {
+    currentFilter: Filter;
+    setCurrentFilter: (newFilter: Filter) => void;
+    searchValue: string;
+    setSearchValue: (newSearchValue: string) => void;
+    clearTasks: () => void;
+    clearCompleteTasks: () => void;
 };
 
 const ListOptions = ({
-    filters,
     currentFilter,
-    setFilter,
-    search,
-    setSearch,
+    setCurrentFilter,
+    searchValue,
+    setSearchValue,
     clearTasks,
     clearCompleteTasks,
-}: OptionsProps) => {
+}: Props) => {
     const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
 
-        setSearch(event.target.value);
+        setSearchValue(event.target.value);
     };
 
-    const filterButtons = filters.map((filter) => {
+    const filterButtons = Filters.map((filter) => {
         const selected = filter === currentFilter;
         return (
             <button
                 key={filter}
                 data-selected={selected.toString()}
-                onClick={() => setFilter(filter)}
+                onClick={() => setCurrentFilter(filter)}
                 className={styles.filterButton}
             >
                 {filter}
@@ -49,8 +50,8 @@ const ListOptions = ({
                         type='text'
                         placeholder='search'
                         maxLength={20}
-                        data-empty={(search.length === 0).toString()}
-                        value={search}
+                        data-empty={(searchValue.length === 0).toString()}
+                        value={searchValue}
                         onChange={handleSearch}
                         className={styles.searchInput}
                     />

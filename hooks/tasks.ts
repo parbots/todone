@@ -1,87 +1,83 @@
 import { useState, useEffect } from 'react';
 
-import type { Task } from 'types/task';
+import type { Task, Filter } from 'types/task';
 
 import { v4 as uuid } from 'uuid';
 
-type TaskHook = [
-    {
-        list: Task[];
-        add: Function;
-        remove: Function;
-        toggleComplete: Function;
-        clear: Function;
-        clearComplete: Function;
-        set: Function;
-    },
-    {
-        list: string[];
-        current: string;
-        setCurrent: Function;
-    },
-    {
-        list: Task[];
-        value: string;
-        set: Function;
-    }
-];
+type TaskHook = (initialTasks: Task[]) => {
+    all: Task[];
+    setAll: (tasks: Task[]) => void;
+    add: (taskToAdd: Task | string) => Task;
+    remove: (taskToRemove: Task) => Task;
+    toggleComplete: (taskToToggle: Task) => Task;
+    clear: () => Task[];
+    clearComplete: () => Task[];
+    filtered: Task[];
+    filter: Filter;
+    setFilter: (newFilter: Filter) => void;
+    searched: Task[];
+    search: string;
+    setSearch: (newSearch: string) => void;
+};
 
-export const useTasks = (initialTasks: Task[]): TaskHook => {
+export const useTasks: TaskHook = (initialTasks) => {
     const [tasks, setTasks] = useState<Task[]>(initialTasks);
-
-    const [filters] = useState<string[]>(['All', 'Active', 'Complete']);
-    const [currentFilter, setCurrentFilter] = useState('All');
+    const [filter, setFilter] = useState<Filter>('All');
     const [filteredTasks, setFilteredTasks] = useState([...tasks]);
 
-    const [search, setSearch] = useState('');
+    const [search, setSearch] = useState<string>('');
     const [searchedTasks, setSearchedTasks] = useState([...filteredTasks]);
 
-    const createTask = (taskName: string): Task => {
+    const createTask = (newTaskName: string): Task => {
         return {
             id: uuid(),
-            name: taskName,
+            name: newTaskName,
             complete: false,
         };
     };
 
-    const addTask = (newTask: Task): Task => {
-        setTasks([...tasks, newTask]);
+    const addTask = (taskToAdd: Task | string): Task => {
+        if (typeof taskToAdd === 'string') {
+            const createdTask = createTask(taskToAdd);
 
-        return newTask;
+            setTasks([...tasks, createdTask]);
+
+            return createdTask;
+        }
+
+        setTasks([...tasks, taskToAdd]);
+
+        return taskToAdd;
     };
 
-    const addNewTask = (taskName: string): Task => {
-        return addTask(createTask(taskName));
-    };
-
-    const removeTask = (removedTask: Task): Task => {
+    const removeTask = (taskToRemove: Task): Task => {
         setTasks(
             tasks.filter((task) => {
-                return task !== removedTask;
+                return task !== taskToRemove;
             })
         );
 
-        return removedTask;
+        return taskToRemove;
     };
 
-    const toggleCompleteTask = (toggledTask: Task): Task => {
+    const toggleCompleteTask = (taskToToggle: Task): Task => {
         setTasks(
             tasks.map((task) => {
-                if (task === toggledTask) task.complete = !task.complete;
+                if (task === taskToToggle) task.complete = !task.complete;
                 return task;
             })
         );
 
-        return toggledTask;
+        return taskToToggle;
     };
 
-    const removeAllTasks = (): Task[] => {
+    const clearTasks = (): Task[] => {
         const removedTasks = [...tasks];
         setTasks([]);
         return removedTasks;
     };
 
-    const removeCompleteTasks = (): Task[] => {
+    const clearCompleteTasks = (): Task[] => {
         const removedTasks = tasks.filter((task) => {
             return task.complete;
         });
@@ -98,7 +94,7 @@ export const useTasks = (initialTasks: Task[]): TaskHook => {
     useEffect(() => {
         setFilteredTasks(
             tasks.filter((task) => {
-                switch (currentFilter) {
+                switch (filter) {
                     case 'All':
                         return true;
                     case 'Active':
@@ -108,7 +104,7 @@ export const useTasks = (initialTasks: Task[]): TaskHook => {
                 }
             })
         );
-    }, [tasks, currentFilter]);
+    }, [tasks, filter]);
 
     useEffect(() => {
         setSearchedTasks(
@@ -118,25 +114,21 @@ export const useTasks = (initialTasks: Task[]): TaskHook => {
         );
     }, [filteredTasks, search]);
 
-    return [
-        {
-            list: tasks,
-            add: addNewTask,
-            remove: removeTask,
-            toggleComplete: toggleCompleteTask,
-            clear: removeAllTasks,
-            clearComplete: removeCompleteTasks,
-            set: setTasks,
-        },
-        {
-            list: filters,
-            current: currentFilter,
-            setCurrent: setCurrentFilter,
-        },
-        {
-            list: searchedTasks,
-            value: search,
-            set: setSearch,
-        },
-    ];
+    return {
+        all: tasks,
+        setAll: setTasks,
+        add: addTask,
+        remove: removeTask,
+        toggleComplete: toggleCompleteTask,
+        clear: clearTasks,
+        clearComplete: clearCompleteTasks,
+
+        filtered: filteredTasks,
+        filter: filter,
+        setFilter: setFilter,
+
+        searched: searchedTasks,
+        search: search,
+        setSearch: setSearch,
+    };
 };

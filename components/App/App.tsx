@@ -1,14 +1,15 @@
 import styles from './App.module.css';
 
+import { useEffect } from 'react';
+
+import { useTasks } from 'hooks/tasks';
+
 import AddItemForm from 'components/AddItemForm';
 import List from 'components/List';
 import ListOptions from 'components/ListOptions';
 
-import { useTasks } from '../../hooks/tasks';
-import { useEffect } from 'react';
-
 const App = () => {
-    const [tasks, filter, search] = useTasks([]);
+    const tasks = useTasks([]);
 
     useEffect(() => {
         const tasksString = localStorage.getItem('tasks');
@@ -17,15 +18,15 @@ const App = () => {
             const parsedTasks = JSON.parse(tasksString);
 
             if (parsedTasks) {
-                tasks.set(parsedTasks);
+                tasks.setAll(parsedTasks);
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(tasks.list));
-    }, [tasks.list]);
+        localStorage.setItem('tasks', JSON.stringify(tasks.all));
+    }, [tasks.all]);
 
     return (
         <>
@@ -34,18 +35,17 @@ const App = () => {
             </section>
             <section className={styles.section}>
                 <ListOptions
-                    filters={filter.list}
-                    currentFilter={filter.current}
-                    setFilter={filter.setCurrent}
-                    search={search.value}
-                    setSearch={search.set}
+                    currentFilter={tasks.filter}
+                    setCurrentFilter={tasks.setFilter}
+                    searchValue={tasks.search}
+                    setSearchValue={tasks.setSearch}
                     clearTasks={tasks.clear}
                     clearCompleteTasks={tasks.clearComplete}
                 />
             </section>
             <section className={styles.section}>
                 <List
-                    tasks={search.list}
+                    tasks={tasks.searched}
                     toggleCompleteTask={tasks.toggleComplete}
                     removeTask={tasks.remove}
                 />
